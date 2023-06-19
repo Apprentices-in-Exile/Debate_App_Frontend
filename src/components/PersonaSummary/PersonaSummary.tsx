@@ -1,4 +1,4 @@
-import { Avatar, Typography } from "@material-tailwind/react";
+import { Avatar } from "@material-tailwind/react";
 
 interface PersonaSummaryProps {
   persona: {
