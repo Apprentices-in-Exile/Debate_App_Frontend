@@ -1,4 +1,5 @@
 import { Avatar } from "@material-tailwind/react";
+import React from "react";
 
 interface PersonaSummaryProps {
   persona: {
@@ -9,14 +10,7 @@ interface PersonaSummaryProps {
 
 function PersonaSummary({ persona }: PersonaSummaryProps ){
   return (
-    <>
-      {/* <Box sx={{ width: '100%', maxWidth: 500 }}>
-        <Typography variant="h1" gutterBottom>
-            h1. Heading
-        </Typography>
-        </Box> */}
     <Avatar src={persona.imageURL} alt={`${persona.name} avatar`} />
-    </>
   )
 }
 
