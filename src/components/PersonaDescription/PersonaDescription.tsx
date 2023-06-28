@@ -1,6 +1,6 @@
 import { Avatar, Textarea, Typography } from "@material-tailwind/react";
 
-interface PersonaSummaryProps {
+interface PersonaDescriptionProps {
   persona: {
     imageURL: string,
     name: string,
@@ -8,7 +8,7 @@ interface PersonaSummaryProps {
   }
 }
 
-function PersonaSummary({ persona }: PersonaSummaryProps) {
+function PersonaDescription({ persona }: PersonaDescriptionProps) {
   const { name, imageURL, description } = persona
   return (
     <div className="flex items-center gap-4">
@@ -21,4 +21,4 @@ function PersonaSummary({ persona }: PersonaSummaryProps) {
   )
 }
 
-export default PersonaSummary
+export default PersonaDescription
