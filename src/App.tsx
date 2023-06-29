@@ -1,13 +1,19 @@
 // import { useState } from 'react'
 import './index.css'
-import { Button } from "@material-tailwind/react";
+import { Routes, Route } from "react-router-dom";
+import FeedPage from "./pages/FeedPage/FeedPage";
+import AccountPage from './pages/AccountPage/AccountPage';
+import HomePage from './pages/HomePage/HomePage';
 
 function App() {
   // const [count, setCount] = useState(0)
 
   return (
-    <Button className="text-red-800 bg-blue-300 place-content-center" color="blue">Hello World</Button>
-    
+      <Routes>
+        <Route path="/feed" element={<FeedPage/>}/>
+        <Route path="/account" element={<AccountPage/>}/>
+        <Route path="/home" element={<HomePage/>}/>
+      </Routes>
   )
 }
 
