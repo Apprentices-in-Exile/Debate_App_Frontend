@@ -1,4 +1,4 @@
-import { Button, Card, CardBody, CardFooter, Dialog, DialogHeader, Typography, Input, IconButton } from "@material-tailwind/react";
+import { Button, Card, CardBody, CardFooter, Dialog, DialogHeader, Typography, Input } from "@material-tailwind/react";
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { Fragment, useState } from "react";
 
@@ -12,45 +12,46 @@ const LoginModal = () => {
 
     return (
         <Fragment>
-            <Button onClick={handleOpen} className="focus:outline-none">Sign In</Button>
+            <Button onClick={handleOpen} className="focus:outline-none" ripple={false}>Sign In</Button>
             <Dialog 
                 size="xs"
                 open={open}
                 handler={handleOpen}
                 className="focus:outline-none"
             >
-                <DialogHeader className="grid place-items-center">
+                <DialogHeader className="grid place-items-center p-6 pb-0">
                     <Typography variant="h3" color="gray">
                         Sign In
                     </Typography>
                 </DialogHeader>
                 <Card>
                     <form onSubmit={handleSubmit}>
-                    <CardBody className="flex flex-col gap-4">
+                    <CardBody className="flex flex-col gap-5 p-6">
                         <Input label="Email" size="lg"/>
                         <Input 
                             label="Password" 
                             size="lg"
                             type={showPassword ? 'text' : 'password'}
+                            className="flex justify-end items-start"
                             icon={
-                                <IconButton
-                                    className="focus:outline-none rounded-full flex justify-end items-center relative"
-                                    variant="text"
+                                <i
+                                    className="hover:cursor-pointer"
                                     aria-label="toggle password visibility"
                                     color="gray"
-                                    ripple={false}
                                     onClick={()=> setShowPassword(!showPassword)}
                                 >
                           {showPassword ? <VisibilityOff /> : <Visibility />}
-                                </IconButton>
+                                </i>
                             }
                             
                         />
                     </CardBody>
                     <CardFooter className="pt-0">
-                        <Button onClick={handleOpen} className="w-3/4 focus:outline-none" type="submit">
-                            Sign In
-                        </Button>
+                        <div className="flex justify-center">
+                            <Button onClick={handleOpen} className="w-3/4 focus:outline-none flex justify-center" type="submit" ripple={false}>
+                                Sign In
+                            </Button>
+                        </div>
                         <Typography
                             variant="small"
                             className="mt-6 flex justify-center"    
@@ -59,7 +60,7 @@ const LoginModal = () => {
                             <Typography 
                                 variant="small"
                                 color="blue"
-                                className="ml-1 font-bold hover:cursor-pointer"
+                                className="ml-1 font-bold hover:cursor-pointer hover:text-sky-700"
                                 onClick={handleOpen}
                                 >
                                 Sign up
