@@ -6,7 +6,7 @@ function App() {
   // const [count, setCount] = useState(0)
 
   return (
-    <Button className="text-red-800 bg-blue-300 place-content-center" color="blue">Hello World</Button>
+    <Button className="text-red-800 bg-primary font-sans place-content-center"  >Hello World</Button>
     
   )
 }
