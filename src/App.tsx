@@ -6,8 +6,6 @@ import AccountPage from './pages/AccountPage/AccountPage';
 import HomePage from './pages/HomePage/HomePage';
 
 function App() {
-  // const [count, setCount] = useState(0)
-
   return (
       <Routes>
         <Route path="/feed" element={<FeedPage/>}/>
