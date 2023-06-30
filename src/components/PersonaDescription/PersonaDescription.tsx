@@ -14,7 +14,7 @@ function PersonaDescription({ persona }: PersonaDescriptionProps) {
     <div className="flex items-center gap-4">
       <Avatar src={imageURL} alt="avatar" />
       <div>
-        <Typography variant="h6">{name}</Typography>
+        <Typography variant="lead">{name}</Typography>
         <Typography variant="small" color="gray" className="font-normal">{description}</Typography>
       </div>
     </div>
