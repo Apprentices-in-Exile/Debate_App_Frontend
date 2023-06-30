@@ -12,11 +12,12 @@ const LoginModal = () => {
 
     return (
         <Fragment>
-            <Button onClick={handleOpen}>Sign In</Button>
+            <Button onClick={handleOpen} className="focus:outline-none">Sign In</Button>
             <Dialog 
                 size="xs"
                 open={open}
                 handler={handleOpen}
+                className="focus:outline-none"
             >
                 <DialogHeader className="grid place-items-center">
                     <Typography variant="h3" color="gray">
@@ -33,7 +34,11 @@ const LoginModal = () => {
                             type={showPassword ? 'text' : 'password'}
                             icon={
                                 <IconButton
+                                    className="focus:outline-none rounded-full flex justify-end items-center relative"
+                                    variant="text"
                                     aria-label="toggle password visibility"
+                                    color="gray"
+                                    ripple={false}
                                     onClick={()=> setShowPassword(!showPassword)}
                                 >
                           {showPassword ? <VisibilityOff /> : <Visibility />}
@@ -43,7 +48,7 @@ const LoginModal = () => {
                         />
                     </CardBody>
                     <CardFooter className="pt-0">
-                        <Button onClick={handleOpen} className="w-3/4" type="submit">
+                        <Button onClick={handleOpen} className="w-3/4 focus:outline-none" type="submit">
                             Sign In
                         </Button>
                         <Typography

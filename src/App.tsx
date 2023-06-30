@@ -7,10 +7,10 @@ import HomePage from './pages/HomePage/HomePage';
 
 function App() {
   return (
-      <Routes>
+    <Routes>
+        <Route path="/" element={<HomePage/>}/>
         <Route path="/feed" element={<FeedPage/>}/>
         <Route path="/account" element={<AccountPage/>}/>
-        <Route path="/home" element={<HomePage/>}/>
       </Routes>
   )
 }
