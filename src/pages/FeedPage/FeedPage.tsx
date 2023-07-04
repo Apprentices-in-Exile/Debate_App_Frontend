@@ -5,3 +5,4 @@ const FeedPage: React.FC<unknown> = () => {
 }
 
 export default FeedPage
+
