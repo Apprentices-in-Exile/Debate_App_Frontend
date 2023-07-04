@@ -1,10 +1,7 @@
+import React from 'react'
 
-
-const FeedPage = () => {
-
-    return (
-        <div>This is the feed page!</div>
-    );
+const FeedPage: React.FC<unknown> = () => {
+  return <div>This is the feed page!</div>
 }
 
-export default FeedPage;
+export default FeedPage
