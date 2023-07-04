@@ -1,10 +1,9 @@
+import React from 'react'
+import LoginModal from '../../components/LoginModal/LoginModal'
 
-
-const AccountPage = () => {
-
-    return (
-        <div>This is the account page!</div>
-    );
+const AccountPage: React.FC<unknown> = () => {
+  return <LoginModal />
 }
 
-export default AccountPage;
+export default AccountPage
+
