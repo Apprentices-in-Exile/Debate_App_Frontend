@@ -1,5 +1,6 @@
 import { render } from '@testing-library/react'
 import PersonaDescription from '../components/PersonaDescription/PersonaDescription'
+import React from 'react'
 
 describe('App', () => {
   it('should work as expected', () => {

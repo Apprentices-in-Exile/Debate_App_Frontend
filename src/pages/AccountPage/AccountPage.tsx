@@ -1,5 +1,6 @@
+import React from 'react'
 
-const AccountPage = () => {
+const AccountPage = (): JSX.Element => {
   return (
         <div>This is the account page!</div>
   )

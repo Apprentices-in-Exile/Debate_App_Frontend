@@ -1,5 +1,6 @@
+import React from 'react'
 
-const HomePage = () => {
+const HomePage = (): JSX.Element => {
   return (
         <div>This is the home page!</div>
   )
