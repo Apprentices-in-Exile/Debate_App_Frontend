@@ -6,3 +6,4 @@ const AccountPage: React.FC<unknown> = () => {
 }
 
 export default AccountPage
+
