@@ -1,9 +1,9 @@
+import React from 'react'
 
-
-const HomePage = () => {
-    return (
+const HomePage = (): JSX.Element => {
+  return (
         <div>This is the home page!</div>
-    );
+  )
 }
 
-export default HomePage;
+export default HomePage

@@ -1,10 +1,9 @@
+import React from 'react'
 
-
-const FeedPage = () => {
-
-    return (
+const FeedPage = (): JSX.Element => {
+  return (
         <div>This is the feed page!</div>
-    );
+  )
 }
 
-export default FeedPage;
+export default FeedPage

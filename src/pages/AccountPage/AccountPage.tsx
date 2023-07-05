@@ -1,10 +1,9 @@
+import React from 'react'
 
-
-const AccountPage = () => {
-
-    return (
+const AccountPage = (): JSX.Element => {
+  return (
         <div>This is the account page!</div>
-    );
+  )
 }
 
-export default AccountPage;
+export default AccountPage
