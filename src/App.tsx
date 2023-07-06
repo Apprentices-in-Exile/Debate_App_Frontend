@@ -1,5 +1,4 @@
 import './index.css'
-import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import FeedPage from './pages/FeedPage/FeedPage'
 import AccountPage from './pages/AccountPage/AccountPage'
