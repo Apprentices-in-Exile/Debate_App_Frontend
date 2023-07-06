@@ -15,6 +15,8 @@ module.exports = {
   },
   plugins: ['react-refresh', 'react'],
   rules: {
-    'react-refresh/only-export-components': 'warn'
+    'react-refresh/only-export-components': 'warn',
+    'react/react-in-jsx-scope': 'off',
+    'react/jsx-uses-react': 'off'
   }
 }

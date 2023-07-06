@@ -1,4 +1,3 @@
-import React from 'react'
 import { Avatar, Typography } from '@material-tailwind/react'
 
 interface PersonaDescriptionProps {
@@ -12,11 +11,13 @@ interface PersonaDescriptionProps {
 function PersonaDescription ({ persona }: PersonaDescriptionProps): JSX.Element {
   const { name, imageURL, description } = persona
   return (
-    <div className="flex items-center gap-4">
-      <Avatar src={imageURL} alt="avatar" />
+    <div className='flex items-center gap-4'>
+      <Avatar src={imageURL} alt='avatar' />
       <div>
-        <Typography variant="lead">{name}</Typography>
-        <Typography variant="small" color="gray" className="font-normal">{description.concat('stuff')}</Typography>
+        <Typography variant='lead'>{name}</Typography>
+        <Typography variant='small' color='gray' className='font-normal'>
+          {description.concat('stuff')}
+        </Typography>
       </div>
     </div>
   )
