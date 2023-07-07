@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PersonaDescription should match the snapshot 1`] = `
+<div
+  className="flex items-center gap-4"
+>
+  <img
+    alt="avatar"
+    className="inline-block relative object-cover object-center !rounded-full w-12 h-12 rounded-lg"
+    src="imageURL"
+  />
+  <div>
+    <p
+      className="block antialiased font-sans text-xl font-normal leading-relaxed text-inherit"
+    >
+      Name
+    </p>
+    <p
+      className="block antialiased font-sans text-sm leading-normal text-gray-700 font-normal"
+    >
+      Descriptionstuff
+    </p>
+  </div>
+</div>
+`;
