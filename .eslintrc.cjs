@@ -10,10 +10,10 @@ module.exports = {
     extends: [
       'eslint:recommended',
       'plugin:@typescript-eslint/recommended',
-      'plugin:react/recommended',
       'plugin:react-hooks/recommended',
-      'standard-with-typescript',
-      "plugin:react/jsx-runtime"
+      'plugin:react/recommended',
+      'plugin:react/jsx-runtime',
+      'standard-with-typescript'
     ],
     parserOptions: {
       project: ['./tsconfig.json']
