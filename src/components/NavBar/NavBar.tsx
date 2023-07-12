@@ -10,9 +10,8 @@ import {
   Menu,
   MenuHandler,
   MenuList,
-  MenuItem,
+  MenuItem
 } from '@material-tailwind/react'
-import PropTypes from 'prop-types'
 import {
   ChevronDownIcon,
   Bars3Icon,
@@ -32,7 +31,7 @@ import {
 import { ProfileMenu } from './ProfileMenu'
 import { useLocation } from 'react-router-dom'
 
-const colors = {
+const colors: Record<string, string> = {
   blue: 'bg-blue-50 text-blue-500',
   orange: 'bg-orange-50 text-orange-500',
   green: 'bg-green-50 text-green-500',
@@ -164,20 +163,11 @@ export function NavListMenu (): JSX.Element {
   )
 }
 
-interface NavBarProps {
-  props: {
-    isLoggedIn: boolean
-    openNav: boolean
-  }
+interface NavListProps {
+  isLoggedIn: boolean
+  openNav: boolean
 }
-NavBar.propTypes = {
-  props: {
-    isLoggedIn: PropTypes.bool,
-    openNav: PropTypes.bool
-  }
-}
-function NavList ({ props }: NavBarProps): JSX.Element {
-  const { isLoggedIn, openNav } = props
+function NavList ({ isLoggedIn, openNav }: NavListProps): JSX.Element {
   const location = useLocation()
   return (
     <List className='mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex-row lg:p-1'>
@@ -266,14 +256,15 @@ export default function NavBar (): JSX.Element {
           className='lg:hidden'
           onClick={() => setOpenNav(!openNav)}
         >
-          {openNav ?
-          <XMarkIcon className='h-6 w-6' strokeWidth={2} /> :
-          <Bars3Icon className='h-6 w-6' strokeWidth={2} />
-          }
+          {openNav ? (
+            <XMarkIcon className='h-6 w-6' strokeWidth={2} />
+          ) : (
+            <Bars3Icon className='h-6 w-6' strokeWidth={2} />
+          )}
         </IconButton>
       </div>
       <Collapse open={openNav}>
-        <NavList props={{ isLoggedIn, openNav }} />
+        <NavList isLoggedIn={isLoggedIn} openNav={openNav} />
         <div className='flex w-full flex-nowrap items-center gap-2 lg:hidden'>
           {!isLoggedIn && (
             <>
