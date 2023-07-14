@@ -15,7 +15,7 @@ function PersonaDescription ({ persona }: PersonaDescriptionProps): JSX.Element 
       <Avatar src={imageURL} alt="avatar" />
       <div>
         <Typography variant="lead">{name}</Typography>
-        <Typography variant="small" color="gray" className="font-normal">{description.concat('stuff')}</Typography>
+        <Typography variant="small" color="gray" className="font-normal">{description}</Typography>
       </div>
     </div>
   )
