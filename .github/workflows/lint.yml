@@ -1,5 +1,5 @@
 name: run-tests
-run-name: ${{ github.actor }} is running tests on push
+run-name: ${{ github.actor }} is linting on push
 on: [push]
 jobs:
   install-and-run-tests:
