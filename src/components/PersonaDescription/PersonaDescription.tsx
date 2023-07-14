@@ -9,13 +9,13 @@ interface PersonaDescriptionProps {
 }
 
 function PersonaDescription ({ persona }: PersonaDescriptionProps): JSX.Element {
-  const { name, imageURL, description } = persona
+  const { name, imageURL } = persona
   return (
     <div className="flex items-center gap-4">
       <Avatar src={imageURL} alt="avatar" />
       <div>
         <Typography variant="lead">{name}</Typography>
-        <Typography variant="small" color="gray" className="font-normal">{description}</Typography>
+        <Typography variant="small" color="gray" className="font-normal">{'update'}</Typography>
       </div>
     </div>
   )
