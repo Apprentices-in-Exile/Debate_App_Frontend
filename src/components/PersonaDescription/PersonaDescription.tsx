@@ -10,6 +10,7 @@ interface PersonaDescriptionProps {
 
 function PersonaDescription ({ persona }: PersonaDescriptionProps): JSX.Element {
   const { name, imageURL, description } = persona
+  console.log('stuff')
   return (
     <div className="flex items-center gap-4">
       <Avatar src={imageURL} alt="avatar" />
