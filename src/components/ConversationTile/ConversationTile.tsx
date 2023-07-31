@@ -26,7 +26,7 @@ function ConversationTile({
     //         {name}
     //       </Typography>
     //     )}
-        <Typography variant='small' color='white' className='font-normal'>
+        <Typography variant='small' color='white' className='font-normal max-w-3'>
           {text}
         </Typography>
     //   </div>

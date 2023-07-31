@@ -1,5 +1,6 @@
 import { useWebSocket } from '../contexts/WebSocketContext'
-import { Persona } from '../pages/FeedPage/FeedPage'
+import type { Persona } from '../pages/FeedPage/FeedPage'
+
 export const useSendMessage = () => {
   const webSocket = useWebSocket()
 
@@ -14,7 +15,7 @@ export const useSendMessage = () => {
       action: 'conversation',
       message: [topic, persona1string, persona2string]
     }
-    if (webSocket) {
+    if (webSocket !== null) {
       webSocket.send(JSON.stringify(message))
     } else {
       console.log('WebSocket connection not established.')

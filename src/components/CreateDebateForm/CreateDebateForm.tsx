@@ -6,17 +6,14 @@ import {
   Option,
   Textarea
 } from '@material-tailwind/react'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import { Persona } from '../../pages/FeedPage/FeedPage'
 import PersonaDescription from '../PersonaDescription/PersonaDescription'
 import { useSendMessage } from '../../hooks/UseSendMessage'
-
 interface CreateDebateFormProps {
-  className?: string,
-  change: () => void,
+  className?: string
+  change: () => void
 }
-
-
 
 const data = [
   {
@@ -34,17 +31,16 @@ const data = [
       'https://static.wikia.nocookie.net/cluedo/images/f/f3/Colonel_Mustard.jpg'
   }
 ]
-const roundValues = ['1','2','3','5','8']
+const roundValues = ['1', '2', '3', '5', '8']
 
-const CreateDebateForm: React.FC<CreateDebateFormProps> = ({change}: CreateDebateFormProps) => {
+const CreateDebateForm: React.FC<CreateDebateFormProps> = ({
+  change
+}: CreateDebateFormProps) => {
   const [persona1, setPersona] = useState<Persona | null>(null)
   const [persona2, setPersona2] = useState<Persona | null>(null)
   const [topic, setTopic] = useState<string | null>(null)
   const [rounds, setRounds] = useState<string | null>(null)
-const sendMessage =  useSendMessage()
-const handleClick = () => {
-  sendMessage(topic, persona1, persona2) // Send the message
-}
+  const sendMessage = useSendMessage()
 
   return (
     <div>

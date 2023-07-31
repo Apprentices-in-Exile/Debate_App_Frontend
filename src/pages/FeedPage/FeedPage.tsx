@@ -1,9 +1,8 @@
 import CreateDebateForm from '../../components/CreateDebateForm/CreateDebateForm'
-import {useState} from 'react'
+import { useState, useEffect } from 'react'
 import { Button } from '@material-tailwind/react'
-import { useEffect } from 'react'
 import ConversationTile from '../../components/ConversationTile/ConversationTile'
-
+import { useWebSocket } from '../../contexts/WebSocketContext'
 export interface Persona {
   id: string
   name: string
@@ -12,73 +11,39 @@ export interface Persona {
 }
 
 const FeedPage = (): JSX.Element => {
-  const [socket, setSocket] = useState<WebSocket | null>(null)
-  const [response, setResponse] = useState<string>('')
   const [createDebate, setCreateDebate] = useState<boolean>(false)
 
-  useEffect(() => {
-    // Connect to the WebSocket server
-    const ws = new WebSocket(
-      'wss://a0ppckpw77.execute-api.us-east-2.amazonaws.com/development'
-    )
+  const { messages } = useWebSocket() || {}
 
-    // Set up event listeners for WebSocket events
-    ws.onopen = () => {
-      console.log('WebSocket connection established.')
-      setSocket(ws)
-    }
-
-    ws.onmessage = (event) => {
-      const message = event.data
-      console.log('Received message:', message)
-      setResponse((prevResponse) => prevResponse + event.data.toString())
-      // Handle the received message as needed
-    }
-
-    ws.onclose = () => {
-      console.log('WebSocket connection closed.')
-      setSocket(null)
-    }
-
-    // Clean up the WebSocket connection when the component unmounts
-    return () => {
-      if (socket) {
-        socket.close()
-      }
-    }
-  }, [])
-
-  const sendMessage = (
-    topic: string | null,
-    persona1: Persona | null,
-    persona2: Persona | null
-  ) => {
-    const persona1string = `${persona1?.name}, who is ${persona1?.description}`
-    const persona2string = `${persona2?.name}, who is ${persona2?.description}`
-    const message = {
-      action: 'conversation',
-      message: [topic, persona1string, persona2string]
-    }
-    if (socket) {
-      socket.send(JSON.stringify(message))
-    } else {
-      console.log('WebSocket connection not established.')
-    }
-  }
-  
-  function handleClick (){
+  function handleClick() {
     setCreateDebate((prevCreateDebate) => !prevCreateDebate)
   }
 
   return (
-
-    <div className="flex justify-center">
-      {!createDebate && <Button onClick={()=> handleClick()}>New Debate</Button>}
-      {createDebate && <CreateDebateForm  change={handleClick} sendMessage={sendMessage}/>}      
-      {/* {!createDebate && response.length>0 &&  */}
-      <ConversationTile text={response}></ConversationTile>
-      {/* } */}
-   </div>
+    <div>
+      {!createDebate && (
+        <Button
+          onClick={() => {
+            handleClick()
+          }}
+        >
+          New Debate
+        </Button>
+      )}
+      <div className='flex justify-center'>
+        {createDebate && <CreateDebateForm change={handleClick} />}
+        <div className='max-w-300'>
+          {!createDebate &&
+            messages &&
+            messages.map((message, index) => {
+              return <ConversationTile text={message} key={index}></ConversationTile>
+            })}
+        </div>
+        {/* <div className='flex justify-center text-white'>
+          {messages ? messages.join("") : "No messages yet."}
+        </div> */}
+      </div>
+    </div>
   )
 }
 
