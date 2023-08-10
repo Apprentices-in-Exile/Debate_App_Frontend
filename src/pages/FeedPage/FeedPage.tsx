@@ -1,5 +1,5 @@
 import CreateDebateForm from '../../components/CreateDebateForm/CreateDebateForm'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Button } from '@material-tailwind/react'
 import ConversationTile from '../../components/ConversationTile/ConversationTile'
 import { useWebSocket } from '../../contexts/WebSocketContext'
@@ -12,13 +12,24 @@ export interface Persona {
 
 const FeedPage = (): JSX.Element => {
   const [createDebate, setCreateDebate] = useState<boolean>(false)
+  const [personas, setPersonas] = useState<Persona[] | null>([])
+  const { messages, setMessages } = useWebSocket() ?? {}
 
-  const { messages } = useWebSocket() || {}
-
-  function handleClick() {
+  function handleClick (): void {
     setCreateDebate((prevCreateDebate) => !prevCreateDebate)
+    if (setMessages) {
+      setMessages([])
+    }
   }
-
+  function getPersona (index: number): Persona | undefined {
+    if (personas) {
+      if (index === 0 || index % 2 === 0) {
+        return personas[1]
+      } else {
+        return personas[0]
+      }
+    }
+  }
   return (
     <div>
       {!createDebate && (
@@ -30,18 +41,23 @@ const FeedPage = (): JSX.Element => {
           New Debate
         </Button>
       )}
-      <div className='flex justify-center'>
-        {createDebate && <CreateDebateForm change={handleClick} />}
-        <div className='max-w-300'>
+      <div className='flex justify-center items-center content-center'>
+        {createDebate && (
+          <CreateDebateForm change={handleClick} setPersonas={setPersonas} />
+        )}
+        <div className='flex-col items-center flex-wrap'>
           {!createDebate &&
             messages &&
             messages.map((message, index) => {
-              return <ConversationTile text={message} key={index}></ConversationTile>
+              return (
+                <ConversationTile
+                  text={message}
+                  key={index}
+                  persona={getPersona(index)}
+                ></ConversationTile>
+              )
             })}
         </div>
-        {/* <div className='flex justify-center text-white'>
-          {messages ? messages.join("") : "No messages yet."}
-        </div> */}
       </div>
     </div>
   )

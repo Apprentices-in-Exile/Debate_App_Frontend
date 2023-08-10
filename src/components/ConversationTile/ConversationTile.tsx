@@ -1,6 +1,4 @@
-import { Avatar, Typography  } from "@material-tailwind/react";
-import { useState } from 'react'
-
+import { Avatar, Typography } from '@material-tailwind/react'
 
 interface ConversationTileProps {
   persona?: {
@@ -11,26 +9,32 @@ interface ConversationTileProps {
   text: string
 }
 
-function ConversationTile({
+function ConversationTile ({
   persona,
   text
 }: ConversationTileProps): JSX.Element {
-//   const { name, imageURL, description } = persona
+  const { name, imageURL } = persona ?? { name: '', imageURL: '' }
 
   return (
-    // <div className='flex items-center gap-4 py-2 min-w-600'>
-    //   <Avatar src={imageURL} alt='avatar' />
-    //   <div>
-    //     {(
-    //       <Typography variant='lead' color='white'>
-    //         {name}
-    //       </Typography>
-    //     )}
-        <Typography variant='small' color='white' className='font-normal max-w-3'>
+    <div className='flex items-center gap-4 py-2 px-20 w-2/3'>
+      <div className='w-52'>
+        <Avatar src={imageURL} alt='avatar' size='md' />
+      </div>
+      <div>
+        {
+          <Typography variant='lead' color='white'>
+            {name}
+          </Typography>
+        }
+        <Typography
+          variant='small'
+          color='white'
+          className='font-normal max-w-300 min-w-300'
+        >
           {text}
         </Typography>
-    //   </div>
-    // </div>
+      </div>
+    </div>
   )
 }
 

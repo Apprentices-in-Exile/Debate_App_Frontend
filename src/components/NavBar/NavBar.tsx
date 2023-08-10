@@ -209,7 +209,7 @@ function NavList ({ isLoggedIn, openNav }: NavListProps): JSX.Element {
 }
 
 export default function NavBar (): JSX.Element {
-  const [isLoggedIn, setIsLoggedIn] = React.useState(true) // TODO: Will need to change this later;
+  const [isLoggedIn] = React.useState(true) // TODO: Will need to change this later;
   // ^ probably need this state to extend to all pages of the app and rely on backend data
   const [openNav, setOpenNav] = React.useState(false)
 
@@ -234,9 +234,21 @@ export default function NavBar (): JSX.Element {
           LOGO
         </Typography>
         <div className='hidden lg:block'>
-          <NavList props={{ isLoggedIn, openNav }} />
+          <NavList isLoggedIn={isLoggedIn} openNav={openNav} />
         </div>
         <div className='hidden gap-2 lg:flex'>
+          {/* {isLoggedIn ? (
+            <ProfileMenu />
+          ) : (
+            <div>
+              <Button variant='text' size='sm' color='blue-gray'>
+                Sign In
+              </Button>
+              <Button variant='gradient' size='sm'>
+                Sign Up
+              </Button>
+            </div>
+          )} */}
           {isLoggedIn ? (
             <ProfileMenu />
           ) : (
@@ -254,7 +266,9 @@ export default function NavBar (): JSX.Element {
           variant='text'
           color='blue-gray'
           className='lg:hidden'
-          onClick={() => setOpenNav(!openNav)}
+          onClick={() => {
+            setOpenNav(!openNav)
+          }}
         >
           {openNav ? (
             <XMarkIcon className='h-6 w-6' strokeWidth={2} />

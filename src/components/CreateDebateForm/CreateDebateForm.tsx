@@ -6,13 +6,14 @@ import {
   Option,
   Textarea
 } from '@material-tailwind/react'
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import { Persona } from '../../pages/FeedPage/FeedPage'
 import PersonaDescription from '../PersonaDescription/PersonaDescription'
 import { useSendMessage } from '../../hooks/UseSendMessage'
 interface CreateDebateFormProps {
   className?: string
   change: () => void
+  setPersonas: React.Dispatch<React.SetStateAction<Persona[] | null>>
 }
 
 const data = [
@@ -34,12 +35,13 @@ const data = [
 const roundValues = ['1', '2', '3', '5', '8']
 
 const CreateDebateForm: React.FC<CreateDebateFormProps> = ({
-  change
+  change,
+  setPersonas
 }: CreateDebateFormProps) => {
   const [persona1, setPersona] = useState<Persona | null>(null)
   const [persona2, setPersona2] = useState<Persona | null>(null)
   const [topic, setTopic] = useState<string | null>(null)
-  const [rounds, setRounds] = useState<string | null>(null)
+  const [setRounds] = useState<string | null>(null)
   const sendMessage = useSendMessage()
 
   return (
@@ -56,7 +58,9 @@ const CreateDebateForm: React.FC<CreateDebateFormProps> = ({
           <div className='mb-4 flex flex-col gap-6'>
             <Textarea
               label='Topic'
-              onChange={(e) => setTopic(e.target.value)}
+              onChange={(e) => {
+                setTopic(e.target.value)
+              }}
               labelProps={{ className: 'text-white' }}
               variant='static'
               color='orange'
@@ -73,9 +77,11 @@ const CreateDebateForm: React.FC<CreateDebateFormProps> = ({
                     <Option
                       key={persona.id}
                       value={persona.id}
-                      onClick={() => setPersona(persona)}
+                      onClick={() => {
+                        setPersona(persona)
+                      }}
                     >
-                      {persona.name}
+                      {persona?.name}
                     </Option>
                   )
                 })}
@@ -96,7 +102,9 @@ const CreateDebateForm: React.FC<CreateDebateFormProps> = ({
                     <Option
                       key={persona.id}
                       value={persona.id}
-                      onClick={() => setPersona2(persona)}
+                      onClick={() => {
+                        setPersona2(persona)
+                      }}
                     >
                       {persona.name}
                     </Option>
@@ -119,7 +127,9 @@ const CreateDebateForm: React.FC<CreateDebateFormProps> = ({
                   <Option
                     key={number}
                     value={number}
-                    onClick={() => setRounds(number)}
+                    onClick={() => {
+                      setRounds(number)
+                    }}
                   >
                     {number}
                   </Option>
@@ -134,6 +144,9 @@ const CreateDebateForm: React.FC<CreateDebateFormProps> = ({
             onClick={() => {
               sendMessage(topic, persona1, persona2)
               change()
+              if (persona1 && persona2) {
+                setPersonas([persona2, persona1])
+              }
             }}
           >
             Submit
