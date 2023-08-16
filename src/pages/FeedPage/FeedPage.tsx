@@ -30,7 +30,7 @@ const FeedPage = (): JSX.Element => {
       }
     }
   }
-  return (
+    return (
     <div>
       {!createDebate && (
         <Button
@@ -49,14 +49,14 @@ const FeedPage = (): JSX.Element => {
           {!createDebate &&
             messages &&
             messages.map((message, index) => {
-              return (
-                <ConversationTile
-                  text={message}
-                  key={index}
-                  persona={getPersona(index)}
-                ></ConversationTile>
-              )
-            })}
+                return (
+                  <ConversationTile
+                    text={message}
+                    key={index}
+                    persona={getPersona(index)}
+                  ></ConversationTile>
+                )
+                          })}
         </div>
       </div>
     </div>
