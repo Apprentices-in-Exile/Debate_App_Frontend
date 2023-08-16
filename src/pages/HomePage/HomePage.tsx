@@ -1,6 +1,6 @@
 const HomePage = (): JSX.Element => {
   return (
-        <div>This is the home page!</div>
+      <div>This is the home page!</div>
   )
 }
 
