@@ -18,13 +18,15 @@ export const WebSocketProvider: React.FC<WebSocketProviderProps> = ({
   url,
   children
 }) => {
-  const [webSocket, setWebSocket] = useState<WebSocketContextType | null>(null)
+  const [webSocket, setWebSocket] = useState<WebSocketContextType | null>(null) // State to hold the WebSocket object
   const [messages, setMessages] = useState<string[]>([]) // State to hold received messages
   const [isConnected, setIsConnected] = useState<boolean>(false) // State to track WebSocket connection status
 
   useEffect(() => {
+    // Create the WebSocket connection
     const ws = new WebSocket(url)
 
+    //opens connection with websocket
     ws.onopen = () => {
       console.log('WebSocket connection is open.')
       setWebSocket({
@@ -38,6 +40,8 @@ export const WebSocketProvider: React.FC<WebSocketProviderProps> = ({
       })
       setIsConnected(true)
     }
+
+    // When a message is received, add it to the state
     let saveMessages = false
     let newMessage = false
     ws.onmessage = (event) => {
@@ -64,18 +68,21 @@ export const WebSocketProvider: React.FC<WebSocketProviderProps> = ({
       }
     }
 
+    // When the connection is closed, update the state
     ws.onclose = () => {
       console.log('WebSocket connection is closed.')
       setWebSocket(null)
       setIsConnected(false)
     }
 
+    // When an error occurs, update the state
     ws.onerror = (error) => {
       console.error('WebSocket error:', error)
       setWebSocket(null)
       setIsConnected(false)
     }
 
+    // Close the WebSocket connection when the component unmounts
     return () => {
       ws.close()
     }
