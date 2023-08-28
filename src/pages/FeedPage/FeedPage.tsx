@@ -17,12 +17,12 @@ const FeedPage = (): JSX.Element => {
 
   function handleClick (): void {
     setCreateDebate((prevCreateDebate) => !prevCreateDebate)
-    if (setMessages) {
+    if (setMessages != null) {
       setMessages([])
     }
   }
   function getPersona (index: number): Persona | undefined {
-    if (personas) {
+    if (personas != null) {
       if (index === 0 || index % 2 === 0) {
         return personas[1]
       } else {
@@ -30,7 +30,7 @@ const FeedPage = (): JSX.Element => {
       }
     }
   }
-    return (
+  return (
     <div>
       {!createDebate && (
         <Button
@@ -47,16 +47,16 @@ const FeedPage = (): JSX.Element => {
         )}
         <div className='flex-col items-center flex-wrap'>
           {!createDebate &&
-            messages &&
+            (messages != null) &&
             messages.map((message, index) => {
-                return (
+              return (
                   <ConversationTile
                     text={message}
                     key={index}
                     persona={getPersona(index)}
                   ></ConversationTile>
-                )
-                          })}
+              )
+            })}
         </div>
       </div>
     </div>

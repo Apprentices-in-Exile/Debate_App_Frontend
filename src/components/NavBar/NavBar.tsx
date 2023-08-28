@@ -249,9 +249,11 @@ export default function NavBar (): JSX.Element {
               </Button>
             </div>
           )} */}
-          {isLoggedIn ? (
+          {isLoggedIn
+            ? (
             <ProfileMenu />
-          ) : (
+              )
+            : (
             <div>
               <Button variant='text' size='sm' color='blue-gray'>
                 Sign In
@@ -260,7 +262,7 @@ export default function NavBar (): JSX.Element {
                 Sign Up
               </Button>
             </div>
-          )}
+              )}
         </div>
         <IconButton
           variant='text'
@@ -270,11 +272,13 @@ export default function NavBar (): JSX.Element {
             setOpenNav(!openNav)
           }}
         >
-          {openNav ? (
+          {openNav
+            ? (
             <XMarkIcon className='h-6 w-6' strokeWidth={2} />
-          ) : (
+              )
+            : (
             <Bars3Icon className='h-6 w-6' strokeWidth={2} />
-          )}
+              )}
         </IconButton>
       </div>
       <Collapse open={openNav}>

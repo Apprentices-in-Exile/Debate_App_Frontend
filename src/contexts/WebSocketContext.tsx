@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import type React from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 
 interface WebSocketContextType extends WebSocket {
   send: (data: string) => void
@@ -26,7 +27,7 @@ export const WebSocketProvider: React.FC<WebSocketProviderProps> = ({
     // Create the WebSocket connection
     const ws = new WebSocket(url)
 
-    //opens connection with websocket
+    // opens connection with websocket
     ws.onopen = () => {
       console.log('WebSocket connection is open.')
       setWebSocket({
@@ -89,7 +90,7 @@ export const WebSocketProvider: React.FC<WebSocketProviderProps> = ({
   }, [url])
 
   // Create a new object with the required properties
-  const contextValue: WebSocketContextType | null = webSocket
+  const contextValue: WebSocketContextType | null = (webSocket != null)
     ? {
         ...webSocket,
         messages,
@@ -105,6 +106,7 @@ export const WebSocketProvider: React.FC<WebSocketProviderProps> = ({
   )
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useWebSocket = (): WebSocketContextType | null => {
   return useContext(WebSocketContext)
 }

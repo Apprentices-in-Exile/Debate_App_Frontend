@@ -6,8 +6,9 @@ import {
   Option,
   Textarea
 } from '@material-tailwind/react'
-import React, { useState } from 'react'
-import { Persona } from '../../pages/FeedPage/FeedPage'
+import type React from 'react'
+import { useState } from 'react'
+import { type Persona } from '../../pages/FeedPage/FeedPage'
 import PersonaDescription from '../PersonaDescription/PersonaDescription'
 import { useSendMessage } from '../../hooks/UseSendMessage'
 interface CreateDebateFormProps {
@@ -86,7 +87,7 @@ const CreateDebateForm: React.FC<CreateDebateFormProps> = ({
                   )
                 })}
               </Select>
-              {persona1 && (
+              {(persona1 != null) && (
                 <PersonaDescription persona={persona1} showName={false} />
               )}
             </div>
@@ -111,7 +112,7 @@ const CreateDebateForm: React.FC<CreateDebateFormProps> = ({
                   )
                 })}
               </Select>
-              {persona2 && (
+              {(persona2 != null) && (
                 <PersonaDescription persona={persona2} showName={false} />
               )}
             </div>
@@ -144,7 +145,7 @@ const CreateDebateForm: React.FC<CreateDebateFormProps> = ({
             onClick={() => {
               sendMessage(topic, persona1, persona2)
               change()
-              if (persona1 && persona2) {
+              if ((persona1 != null) && (persona2 != null)) {
                 setPersonas([persona2, persona1])
               }
             }}

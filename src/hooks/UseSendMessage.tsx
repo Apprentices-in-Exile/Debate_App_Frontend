@@ -15,8 +15,8 @@ export const useSendMessage = (): SendMessageFunction => {
     persona1: Persona | null,
     persona2: Persona | null
   ): void => {
-    const persona1string = persona1 ? `${persona1?.name}, who is ${persona1?.description}` : 'random persona'
-    const persona2string = persona2 ? `${persona2?.name}, who is ${persona2?.description}` : 'random persona'
+    const persona1string = (persona1 != null) ? `${persona1?.name}, who is ${persona1?.description}` : 'random persona'
+    const persona2string = (persona2 != null) ? `${persona2?.name}, who is ${persona2?.description}` : 'random persona'
     const message = {
       action: 'conversation',
       message: [topic, persona1string, persona2string]
