@@ -2,7 +2,7 @@
 
 exports[`PersonaDescription should match the snapshot 1`] = `
 <div
-  className="flex items-center gap-4"
+  className="flex items-center gap-4 py-2 min-w-600"
 >
   <img
     alt="avatar"
@@ -11,14 +11,9 @@ exports[`PersonaDescription should match the snapshot 1`] = `
   />
   <div>
     <p
-      className="block antialiased font-sans text-xl font-normal leading-relaxed text-inherit"
+      className="block antialiased font-sans text-sm leading-normal text-white font-normal"
     >
-      Name
-    </p>
-    <p
-      className="block antialiased font-sans text-sm leading-normal text-gray-700 font-normal"
-    >
-      Descriptionstuff
+      Description
     </p>
   </div>
 </div>
