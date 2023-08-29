@@ -23,7 +23,8 @@ module.exports = {
   rules: {
     'react-refresh/only-export-components': 'warn',
     "react/jsx-uses-react": "off",
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "no-warning-comments": 0
   },
   settings: {
     react: {

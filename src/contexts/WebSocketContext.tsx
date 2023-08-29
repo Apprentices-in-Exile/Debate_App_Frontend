@@ -106,7 +106,6 @@ export const WebSocketProvider: React.FC<WebSocketProviderProps> = ({
   )
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const useWebSocket = (): WebSocketContextType | null => {
   return useContext(WebSocketContext)
 }
